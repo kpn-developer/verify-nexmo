@@ -1,0 +1,2362 @@
+{
+	"info": {
+		"_postman_id": "57671182-5f29-44a9-a287-eb753a09a0b7",
+		"name": "Verify-Nexmo",
+		"description": "Verify API is to Verify if a phone number is valid, reachable, and accessible by the user. Verification message can be customerized. Verify API provides the following services\n\n - **Verify Request** - Generate and send a PIN to your user. You use the request_id in the response is used for the Verify check.\n - **Verify Check** - Confirm that the PIN you received from your user matches the one sent by Nexmo as a result of your Verify request.\n - **Verify Search** - Lookup the status of one or more requests.\n - **Verify Control** - Control the progress of your Verify requests.\n\n  \n## [KPN API Store](https://developer.kpn.com/)<br/> [Getting Started](https://developer.kpn.com/getting-started)\n\n  ---\n\nContact Support:\n Name: API Support\n Email: api_developer@kpn.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "4406147-57671182-5f29-44a9-a287-eb753a09a0b7"
+	},
+	"item": [
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "Look up status",
+					"id": "beba43b2-11fe-4bc5-9d0a-1b476b6ca160",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+									"key": "request_id",
+									"value": "{{search.request_id}}"
+								},
+								{
+									"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+									"key": "request_ids",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/search",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search"
+							]
+						},
+						"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+					},
+					"response": [
+						{
+							"id": "c3d35fd4-5fd0-4512-9090-2861be9740ea",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"request_id\": \"<string>\",\n  \"account_id\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"number\": \"<string>\",\n  \"sender_id\": \"<string>\",\n  \"date_submitted\": \"<string>\",\n  \"date_finalized\": \"<string>\",\n  \"first_event_date\": \"<string>\",\n  \"last_event_date\": \"<string>\",\n  \"checks\": \"<string>\",\n  \"error_text\": \"<string>\"\n}"
+						},
+						{
+							"id": "bff836bd-4197-4ec3-9f93-766a1633373e",
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "3d501f32-7550-40bf-9b22-b3a92ed3508c",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "ecadab5d-27d5-4047-b602-b807a86bd7b8",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "1974b6e4-c9ce-476b-9a48-5497674c8215",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "86681677-a0fb-4112-933b-e28dcd1e5a07",
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "d2c8380a-2599-46b4-9935-1c6e351fabf9",
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "4d7d71a5-5cd2-4e9c-a7c5-3eab0dfc2f45",
+							"name": "Service Unavailable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "`Conditional` The request_id you received in the Verify Request Response.\n  (Either request_id or request_ids to be provided)",
+											"key": "request_id",
+											"value": "{{search.request_id}}"
+										},
+										{
+											"description": "`Conditional` More than one request_id. Each request_id is a new parameter in the Verify Search request. A maximum of 10 request_id parameters can be specified.\n    (Either request_id or request_ids to be provided)",
+											"key": "request_ids",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/search",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search"
+									]
+								},
+								"description": "This API resource performs the following \n - Send a Verify Search request containing the request_id's of the Verify requests to search for.\n - Check the status response parameter in the Search Response to see if the request was successfully completed.\n \n **Note :** Either `request_id` or `request_ids` can be provided as part of a request message.\n\n ### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/search' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```          \n  "
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "a63eeb80-2c64-4b2e-96ae-1c70d0a78a9c"
+		},
+		{
+			"name": "control",
+			"item": [
+				{
+					"name": "Control Verify Request",
+					"id": "09c3ccee-4854-4dc3-b278-f168e3fec0ab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "(Required) The request_id you received in the Verify Request Response.",
+									"key": "request_id",
+									"value": "{{control.request_id}}"
+								},
+								{
+									"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+									"key": "cmd",
+									"value": "{{control.cmd}}"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/control",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"control"
+							]
+						},
+						"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+					},
+					"response": [
+						{
+							"id": "ad2e8f95-6db6-495c-b4e0-b3c34f996688",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"request_id\": \"<string>\",\n  \"account_id\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"command\": \"<string>\"\n}"
+						},
+						{
+							"id": "141f1b6b-1cc7-4371-87b1-bf09d0428069",
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "367a8df4-e70c-48bb-8ad1-f41dfd499e1f",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "2ed7d3ee-cd01-4a4b-ba1c-0a2b4ad379a1",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "2a203df0-4f9e-4058-b598-8207371d3f95",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "31960ceb-a4e3-4e27-b50a-709b62c568ba",
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "9858f0d6-4930-4c22-a5cc-45d55a9f979f",
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "460535aa-d438-4129-8ccd-4fc933b4affd",
+							"name": "Service Unavailable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The request_id you received in the Verify Request Response.",
+											"key": "request_id",
+											"value": "{{control.request_id}}"
+										},
+										{
+											"description": "(Required) Change the command workflow. Supported values are\n   cancel - stop the request\n   trigger_next_event - advance the request to the next part of the process.\n\n  Verification requests can't be cancelled within the first 30 seconds. You must wait at least 30s after sending a Verify Request before cancelling.",
+											"key": "cmd",
+											"value": "{{control.cmd}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/control",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"control"
+									]
+								},
+								"description": "This APi resource is used to control the progress of your Verify Requests\n  - Send a Verify request.\n  - Check the response.\n  \n  Following are possible values of \"status\" in the response.(Code =  Command :  Error Text : Meaning)\n  \n  - 0 = Success :  Success : Success.\n  - 19 = Cancel  Verification requests can't be cancelled within the first 30 seconds  :  You must wait at least 30s after sending a Verify Request before cancelling.\n  - 19 =  Cancel : Verification requests can't be cancelled now. Too many attempts to re-deliver have already been made :  Verify has made too many attempts to redeliver a PIN for this request; you have to wait for the workflow to complete. Also, you cannot initiate a new Verify Request until this one expires.\n  - 19 =   Trigger_Next_Event : No more events are left to execute  : All the attempts to deliver the PIN for this request have been completed and there are no more events to skip to.\n  \n\n  \n ### Example\n\n  Request:\n  \n  ```\n  curl -X POST \\\n  'https://api-prd.kpn.com/communication/nexmo/verify/control' \\\n    -H 'authorization: Bearer access_token' \\\n    -H 'content-type: application/x-www-form-urlencoded' \\\n    -d 'request_id=REQUEST_ID&cmd=CMD'\n  \n  ```\n  Response:\n  \n  ```\n  {\n    \"status\":\"0\",\n    \"command\":\"cancel\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "cf5c0cb5-6fbc-42de-b87a-44ce82070c0e"
+		},
+		{
+			"name": "check",
+			"item": [
+				{
+					"name": "Verify PIN",
+					"id": "48778dc0-c574-4a2c-af85-eb6ef56d09a0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+									"key": "request_id",
+									"value": "{{check.request_id}}"
+								},
+								{
+									"description": "(Required) The PIN given by your user.",
+									"key": "code",
+									"value": "{{check.code}}"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/check",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"check"
+							]
+						},
+						"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+					},
+					"response": [
+						{
+							"id": "aa1b1757-db2a-4a04-af91-6512ee864ea1",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"event_id\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"error_text\": \"<string>\"\n}"
+						},
+						{
+							"id": "764d8d58-0b81-4eb0-afbd-866a49f98b9b",
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "ce9a157f-b44d-478d-b417-1e1db21e385a",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "f6da87f0-2832-4266-9729-e253162c1913",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "cdb68f95-005d-4faf-8d54-97c229c6c42e",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "489569b3-8f0c-4718-a644-844ba5c12b7f",
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "e218d052-a12b-47c3-ac14-c8024e64760b",
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "21bc5469-8363-47a1-a6c3-07c0cdb339c7",
+							"name": "Service Unavailable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The identifier of the Verify request to check. This is the request_id you received in the Verify Request response.",
+											"key": "request_id",
+											"value": "{{check.request_id}}"
+										},
+										{
+											"description": "(Required) The PIN given by your user.",
+											"key": "code",
+											"value": "{{check.code}}"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/check",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"check"
+									]
+								},
+								"description": "To use Check reosurce following steps need to be followed\n\n -  Use a check request to send the PIN you received from your user to Nexmo.\n - Check the response codes in the response to see if the PIN sent by your user matched the PIN generated by Nexmo\n \n### Examples\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify/check' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'request_id=REQUEST_ID&code=CODE'\n  \n  ```\n  \n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```"
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "c5ef7aae-76dc-45a7-9fc9-9e42ee3f08a9"
+		},
+		{
+			"name": "/",
+			"item": [
+				{
+					"name": "Generate PIN",
+					"id": "df71563f-38bb-4656-a508-943339e77f23",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+									"key": "number",
+									"value": "{{generatepin.number}}"
+								},
+								{
+									"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+									"key": "brand",
+									"value": "{{generatepin.brand}}"
+								},
+								{
+									"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+									"key": "country",
+									"value": ""
+								},
+								{
+									"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+									"key": "sender_id",
+									"value": ""
+								},
+								{
+									"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+									"key": "code_length",
+									"value": ""
+								},
+								{
+									"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+									"key": "lg",
+									"value": ""
+								},
+								{
+									"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+									"key": "require_type",
+									"value": ""
+								},
+								{
+									"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+									"key": "pin_expiry",
+									"value": ""
+								},
+								{
+									"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+									"key": "next_event_wait",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+					},
+					"response": [
+						{
+							"id": "12860de2-d757-483c-9dbf-27378a27aba7",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"request_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"error_text\": \"<string>\"\n}"
+						},
+						{
+							"id": "d926c02f-faf4-4105-bff8-3827f7da09ff",
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "cb590d1a-fd08-431d-a024-7eeaf777bda8",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "02adf798-0a51-4136-8368-074cdda1f401",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "9810a7fa-bd32-42b2-ae35-e23e33896c95",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "1701dced-a2fe-4582-bf15-57a8d84686e8",
+							"name": "Too Many Requests",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "f4c05aa0-8c43-475f-b113-59a4c013739b",
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						},
+						{
+							"id": "1e0c7bfc-9217-448a-89d9-9b2fd36180ad",
+							"name": "Service Unavailable",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"value": "application"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"description": "(Required) The mobile or landline phone number to verify. Unless you are setting country explicitly, this number must be in E.164  format. \n  example: 447700900000",
+											"key": "number",
+											"value": "{{generatepin.number}}"
+										},
+										{
+											"description": "(Required) The name of the company or App you are using Verify for. This 18 character alphanumeric string is used in the body of Verify message. \n  example: \"Your brand PIN is ..\".",
+											"key": "brand",
+											"value": "{{generatepin.brand}}"
+										},
+										{
+											"description": "If do not set number in international format or you are not sure if number is correctly formatted, set country with the two-character country code. For example, GB, US. Verify works out the international phone number for you.",
+											"key": "country",
+											"value": ""
+										},
+										{
+											"description": "An 11 character alphanumeric string to specify the SenderID for SMS sent by Verify. Depending on the destination of the phone number you are applying, restrictions may apply. By default, sender_id is VERIFY.",
+											"key": "sender_id",
+											"value": ""
+										},
+										{
+											"description": "The length of the PIN. Possible values are 6 or 4 characters. The default value is 4.",
+											"key": "code_length",
+											"value": ""
+										},
+										{
+											"description": "By default, the SMS or text-to-speech (TTS) message is generated in the locale that matches the number. For example, the text message or TTS message for a 33* number is sent in French. Use this parameter to explicitly control the language and accent used for the Verify request. The default language is en-us.",
+											"key": "lg",
+											"value": ""
+										},
+										{
+											"description": "'Restrict verification to a certain network type. Possible values are-\n  All (Default)\n  Mobile\n  Landline\n  Note- contact api_developer@kpn.com to enable this feature.'",
+											"key": "require_type",
+											"value": ""
+										},
+										{
+											"description": "The PIN validity time from generation. This is an integer value between 60 and 3600 seconds. The default is 300 seconds. When specified together, pin_expiry must be an integer multiple of next_event_wait. Otherwise, pin_expiry is set to equal next_event_wait. \n  For example:\n    - pin_expiry = 360 seconds, so next_event_wait = 120 seconds - all three attempts have the same PIN.\n    - pin_expiry = 240 seconds, so next_event_wait = 120 seconds - 1st and 2nd attempts have the same PIN, third attempt has a different PIN.\n    - pin_expiry = 120 (or 200 or 400 seconds) - each attempt has a different PIN.",
+											"key": "pin_expiry",
+											"value": ""
+										},
+										{
+											"description": "An integer value between 60 and 900 seconds inclusive that specifies the wait time between attempts to deliver the PIN. Verify calculates the default value based on the average time taken by users to complete verification.",
+											"key": "next_event_wait",
+											"value": ""
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										""
+									]
+								},
+								"description": "To use Verify Request,  follwoing steps needs to be followed\n -   Create a Request to send a PIN to your user.\n -   Check the response codes in the Response to ensure that your request was successful.\n \n### Example\n  \n  Request:\n  \n  ```\n  curl -X POST \\\n    'https://api-prd.kpn.com/communication/nexmo/verify' \\\n      -H 'authorization: Bearer access_token' \\\n      -H 'content-type: application/x-www-form-urlencoded' \\\n      -d 'number=316********&brand=VerifyTest'\n  \n  ```\n  \n  Response:\n  \n  ```\n  {\n    \"request_id\":\"1267899\",\n    \"status\":\"status\",\n    \"error_text\":\"error\"\n  }\n  \n  ```\n  "
+							},
+							"status": "Service Unavailable",
+							"code": 503,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"<string>\",\n  \"status\": \"<string>\",\n  \"name\": \"<string>\",\n  \"message\": \"<string>\",\n  \"info\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"id": "06ff4087-c9ec-4bc2-89cb-380dde2b9379"
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "client_authentication",
+				"value": "body",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{client_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "access_token",
+				"type": "string"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0a784a30-db69-4fb5-af65-eabd601fffbf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3d40cd76-3484-41fa-93e0-4ff875dc01a4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "d8f4b642-c793-45a0-bbc5-716c1eba3ea1",
+			"key": "baseUrl",
+			"value": "https://api-prd.kpn.com/communication/nexmo/verify"
+		},
+		{
+			"id": "2bc6e98d-f84d-441a-a401-1f28da79ac05",
+			"key": "client_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "e63637c3-dee2-4c6e-9113-ef421c423584",
+			"key": "client_secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "7f4c5f09-60c3-4c2c-b4f0-37d3162e4379",
+			"key": "generatepin.number",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "449f5e50-7e96-48da-bd05-840e596ea942",
+			"key": "generatepin.brand",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "7fd1c8d6-2018-4611-a2e1-a06d2e1a374b",
+			"key": "check.request_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "adf0388c-6bb9-4552-b890-de11ec960634",
+			"key": "check.code",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "65cd2477-229d-43f2-baf8-748464dc17ab",
+			"key": "control.request_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "a34d5925-8f4b-4c92-8e8d-29bb95982f8a",
+			"key": "control.cmd",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "005ffc22-211a-4fda-8f33-10958f0f899a",
+			"key": "search.request_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
