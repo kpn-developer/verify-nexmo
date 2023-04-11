@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  description: "Verify API is to Verify if a phone number is valid, reachable, and accessible by the user. Verification message can be customerized. Verify API provides the following services\n\n - **Verify Request** - Generate and send a PIN to your user. You use the request_id in the response is used for the Verify check.\n - **Verify Check** - Confirm that the PIN you received from your user matches the one sent by Nexmo as a result of your Verify request.\n - **Verify Search** - Lookup the status of one or more requests.\n - **Verify Control** - Control the progress of your Verify requests.\n\n  \n## [KPN API Store](https://developer.kpn.com/)<br/> [Getting Started](https://developer.kpn.com/getting-started)\n\n  ---"
+  description: "Verify API is to Verify if a phone number is valid, reachable, and accessible by the user. Verification message can be customerized. Verify API provides the following services\n\n - **Verify Request** - Generate and send a PIN to your user. You use the request_id in the response is used for the Verify check.\n - **Verify Check** - Confirm that the PIN you received from your user matches the one sent by Nexmo as a result of your Verify request.\n - **Verify Search** - Lookup the status of one or more requests.\n - **Verify Control** - Control the progress of your Verify requests.\n\n  \n## [KPN Developer](https://developer.kpn.com/)<br/> [Getting Started](https://developer.kpn.com/getting-started)\n\n  ---"
   version: v1.1.1
   title: Verify-Nexmo
   termsOfService: https://developer.kpn.com/legal
